@@ -2,6 +2,7 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
 
 public class Main {
     private static final UserServiceImpl usi = new UserServiceImpl();
@@ -17,7 +18,5 @@ public class Main {
 
         usi.cleanUsersTable();
         usi.dropUsersTable();
-
-
     }
 }

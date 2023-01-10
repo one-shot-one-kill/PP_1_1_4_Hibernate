@@ -1,5 +1,10 @@
 package jm.task.core.jdbc.util;
 
+import jm.task.core.jdbc.model.User;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,5 +25,19 @@ public class Util {
             throw new RuntimeException(e);
         }
         return conn;
+    }
+
+    public static SessionFactory getConnectionHibernate(){
+        SessionFactory sessionFactory = null;
+        try {
+            sessionFactory = new Configuration()
+                    .configure()
+                    .addAnnotatedClass(User.class)
+                    .buildSessionFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Исключение!" + e);
+        }
+        return sessionFactory;
     }
 }
